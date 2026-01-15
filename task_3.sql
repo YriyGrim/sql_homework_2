@@ -6,11 +6,11 @@ JOIN genres g ON g.id = ga.genre_id
 GROUP BY g.name;
 
 --Количество треков, вошедших в альбомы 2019–2020 годов.
-SELECT a.name, COUNT(sc.album_id) AS count_songs
-FROM songs sc
-JOIN albums a ON a.id = sc.album_id
-WHERE a.release_date BETWEEN '2019-01-01' AND '2020-12-31'
-GROUP BY a.name;
+SELECT COUNT(s.id) AS total_songs
+FROM songs s
+JOIN albums a ON a.id = s.album_id
+WHERE a.release_date BETWEEN '2019-01-01' AND '2020-12-31';
+
 
 --Средняя продолжительность треков по каждому альбому.
 SELECT a.name, AVG(sc.duration) AS avg_duration
